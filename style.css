@@ -1,0 +1,90 @@
+body {
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #9e9e9e;
+}
+
+.row {
+  float: left;
+  width: 100%;
+}
+
+.column {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border-bottom: 5px solid;
+  transition: 0.5s;
+  background-size: cover;
+}
+
+.interacao:hover, .interacao:hover, .interacao:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.row:nth-child(8) .column:nth-child(1), .row:nth-child(8) .column:nth-child(2), .row:nth-child(8) .column:nth-child(3) {
+  border-bottom: none;
+}
+
+.column:nth-child(1), .column:nth-child(2) {
+  border-right: 5px solid;
+}
+
+#playerTurn {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#winner, p:nth-child(2), p:nth-child(3) {
+  font-weight: bold;
+}
+
+p:nth-child(2) span, p:nth-child(3) span {
+  font-weight: normal;
+}
+
+button {
+  width: 180px;
+  height: 40px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #7a7a7a;
+  color: #000000;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+.piscaPis {
+  animation: pisca 0.65s infinite;
+}
+
+@keyframes pisca {
+  from { 
+    background-color: rgba(0, 128, 0, 0.3); 
+  }
+
+  25% {
+    background-color: rgba(0, 128, 0, 0.6);
+  }
+
+  50% {
+    background-color: rgba(0, 128, 0, 0.9);
+  }
+
+  75% {
+    background-color: rgba(0, 128, 0, 0.6);
+  }
+  
+  to  {
+    background-color: rgba(0, 128, 0, 0.3); 
+  }
+}

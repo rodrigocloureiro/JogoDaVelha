@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Jogo da Velha</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Jogo da Velha</h1>
+    <h2>Jogador da vez: <span id="sJogadorDaVez"></span></h2>
+  </header>
+
+  <main>
+    <p id="winner">Vencedor:</p>
+    <p>Tempo da partida: <span id="duracao-partida"></span></p>
+    <p>Melhor tempo: <span id="melhor-tempo"></span></p>
+    <button type="button" onclick="ticTacToe()">Jogar/Mudar Jogador</button>
+    <button type="button">Jogar Novamente</button>
+    <div class="row">
+      <div class="column"></div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+
+    <div class="row">
+      <div class="column"></div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+
+    <div class="row">
+      <div class="column"></div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+
+    <h2>Placar</h2>
+    <p><span id="nomeJ1Placar"></span><span id="pontJ1Placar"></span></p>
+    <p><span id="nomeJ2Placar"></span><span id="pontJ2Placar"></span></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
