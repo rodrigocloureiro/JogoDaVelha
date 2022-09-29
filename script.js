@@ -19,7 +19,7 @@ let nomeJ1Placar = document.getElementById("nomeJ1Placar");
 let pontJ1Placar = document.getElementById("pontJ1Placar");
 let nomeJ2Placar = document.getElementById("nomeJ2Placar");
 let pontJ2Placar = document.getElementById("pontJ2Placar");
-
+/* Inicia o jogo */
 function ticTacToe() {
   jogador1 = prompt("Jogador 1:");
   jogador2 = prompt("Jogador 2:");
@@ -34,20 +34,20 @@ function ticTacToe() {
   placar();
   reset();
 }
-
+/* Animação em verde quando há vitória */
 function animacao(index1, index2, index3) {
   casa[index1].classList.add("piscaPis");
   casa[index2].classList.add("piscaPis");
   casa[index3].classList.add("piscaPis");
 }
-
+/* Placar de pontuação dos jogadores */
 function placar() {
   nomeJ1Placar.innerText = `${jogador1} - `;
   pontJ1Placar.innerText = `${jogador1Vit}`;
   nomeJ2Placar.innerText = `${jogador2} - `;
   pontJ2Placar.innerText = `${jogador2Vit}`;
 }
-
+/* Escrever o resultado no HTML quando for velha */
 function velhaJogo() {
   if(!ganhou) {
     sJogadorDaVez.innerText = "Jogue Novamente";
@@ -57,23 +57,23 @@ function velhaJogo() {
     }
   }
 }
-
+/* Determina o vencedor (X ou Círculo) */
 function quemGanhou(index1) {
   if(casa[index1].title == "circle" && !ganhou) {
       vencedor.innerText = `Vencedor: ${jogador1}!`;
-      if((vez / 2) <= 4)
-        jogador1Vit += 3;
+      if((vez / 2) <= 4) /* se o jogador vencer em ate 4 jogadas, ele ganha 3 pontos */
+        jogador1Vit += 3; /* pontuação do jogador 1 */
       else
-        jogador1Vit++;
+        jogador1Vit++; /* se o jogador não vencer em ate 4 jogadas, ele ganha 1 ponto */
     } else if(casa[index1].title == "x") {
       vencedor.innerText = `Vencedor: ${jogador2}!`;
-      if((vez / 2) <= 4.5)
-        jogador2Vit += 3;
+      if((vez / 2) <= 4.5) /* se o jogador vencer em ate 4 jogadas, ele ganha 3 pontos */
+        jogador2Vit += 3; /* pontuação do jogador 2 */
       else
-        jogador2Vit++;
+        jogador2Vit++; /* se o jogador não vencer em ate 4 jogadas, ele ganha 1 ponto */
     }
 }
-
+/* Responsável por verificar vitória e chamar função que determina quem venceu (X ou Círculo) */
 function ganhouJogo(index1, index2, index3) {
   if(((casa[index1].title == "circle") && (casa[index2].title == "circle") && (casa[index3].title == "circle")) || ((casa[index1].title == "x") && (casa[index2].title == "x") && (casa[index3].title == "x"))) {
     jogadorVencedor = `${casa[index1].title}`;
@@ -90,7 +90,7 @@ function ganhouJogo(index1, index2, index3) {
     animacao(index1, index2, index3);
   }
 }
-
+/* Reinicia o jogo */
 function reset() {
   ganhou = false;
   for(let i =0; i < 9; i++) {
@@ -107,13 +107,13 @@ function reset() {
   tempoInicioJogo = new Date();
   duracao.innerText = "";
 }
-
+/* Calcula a duração da partida */
 function duracaoPartida(inicio, final) {
   tempoPartida = final.getTime() - inicio.getTime();
-  tempoPartida = tempoPartida / 1000;
+  tempoPartida = tempoPartida / 1000; /* converte para segundos */
   duracao.innerText = `${tempoPartida.toFixed(2)} segundos`;
   if(Number(tempoPartida.toFixed(2)) < melhorTempo && ganhou) {
-    melhorTempo = tempoPartida.toFixed(2);
+    melhorTempo = tempoPartida.toFixed(2); /* Atribui o melhor tempo */
     if(jogadorVencedor == "x") {
       recorde.innerText = `${melhorTempo} segundos - ${jogador2}`;
     }
@@ -122,40 +122,40 @@ function duracaoPartida(inicio, final) {
     }
   }
 }
-
+/* Verifica a linha */
 function verificaLinha() {
   ganhouJogo(0, 1, 2);
   ganhouJogo(3, 4, 5);
   ganhouJogo(6, 7, 8);
 }
-
+/* Verifica a coluna */
 function verificaColuna() {
   ganhouJogo(0, 3, 6);
   ganhouJogo(1, 4, 7);
   ganhouJogo(2, 5, 8);
 }
-
+/* Verifica a diagonal */
 function verificaDiagonal() {
   ganhouJogo(0, 4, 8);
   ganhouJogo(2, 4, 6);
 }
-
+/* Finaliza a duração da partida e chama função que exibe o placar */
 function verificaGanhou() {
   verificaLinha();
   verificaColuna();
   verificaDiagonal();
-  if(ganhou) {
+  if(ganhou) { /* se houver vencedor */
     tempoFinalJogo = new Date();
     duracaoPartida(tempoInicioJogo, tempoFinalJogo);
     placar();
   }
-  if(!ganhou && vez == 10) {
+  if(!ganhou && vez == 10) { /* se nao houver vencedor => velha */
     tempoFinalJogo = new Date();
     duracaoPartida(tempoInicioJogo, tempoFinalJogo);
     velhaJogo();
   }
 }
-
+/* Seleciona as casas */
 function select(event, nCasa) {
   let jogada = event.target;
   if(vez %2 != 0) {
